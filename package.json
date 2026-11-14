@@ -1,0 +1,75 @@
+{
+  "name": "@webship.co/workspace-drupal",
+  "version": "1.0.7",
+  "description": "Drupal for Webship Workspace: one builder for Drupal core (`cmd-drupal-project.sh`, Drupal 11, 12 or a named release) and the Drush tool in every sites folder, the default accounts, the Drupal core step pack wired into the testing setup, and two AI agents in the AI Agents folder.",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webship/workspace-drupal.git"
+  },
+  "files": [
+    "dist/src",
+    "agents",
+    "commands",
+    "features",
+    "scripts",
+    "testing",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "workspacePlugin": {
+    "name": "drupal",
+    "label": "Drupal",
+    "commands": {
+      "types": [
+        "sites"
+      ],
+      "workspaces": [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "files": [
+        "commands/cmd-drupal-project.sh",
+        "commands/cmd-tools-drupal-cli.sh"
+      ]
+    },
+    "scripts": {
+      "functions": [
+        "scripts/functions/fun-drupal.sh"
+      ],
+      "args": [
+        "scripts/args/arg-drupal.sh",
+        "scripts/args/arg-drupal-cli.sh"
+      ],
+      "machine": [
+        "testing/site.feature"
+      ]
+    },
+    "ai": {
+      "agents": [
+        "agents/drupal-site-builder.md",
+        "agents/drupal-tester.md"
+      ]
+    },
+    "features": [
+      "features/drupal.feature"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@webship.co/workspace-plugin-api": "^1.0.7",
+    "typescript": "^5.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
