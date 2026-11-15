@@ -199,3 +199,10 @@ test('the body of every item can be followed by any AI CLI: it names no tool or 
   for (const f of manifest.ai.prompts) assert.ok(read(f).includes(NOTE), `${f} says its text can be given to another AI CLI`);
   for (const f of manifest.ai.commands) assert.match(read(f), /`\$ARGUMENTS` stands for what was typed after the command/, `${f} says in words what its arguments are`);
 });
+
+// The fixture is the pack at the version the builder pins, so a phrase checked here is one a project really gets.
+test('the fixture is the pack at the version the builder pins', () => {
+  const head = read('tests/fixtures/step-definitions.txt').split('\n')[0];
+  const pin = read('scripts/functions/fun-drupal.sh').match(/_STEPS_VERSION='\^([0-9.]+)'/)![1];
+  assert.ok(head.includes(`@webship-js/drupal-core-steps ${pin} `), `the fixture is read from @webship-js/drupal-core-steps ${pin}: ${head}`);
+});

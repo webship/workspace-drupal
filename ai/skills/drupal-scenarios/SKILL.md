@@ -217,8 +217,9 @@ redefined for this platform.
   scenario in which the editor writes needs the permissions first:
   `bash cmd-tools-drupal-cli.sh <site> --run "role:perm:add content_editor 'create article content,edit own article content,delete own article content'"`.
 - **The content editor can add a term and cannot delete it** with the pack's step: the step reads
-  the vocabulary's overview, which answers 403 for that role, and the term stays on the site. Add
-  and delete terms as `admin`, or delete what was left with
+  the vocabulary's overview, which answers 403 for that role. The step stops there and says so
+  (`This account may not open …, so nothing was deleted`), and the term stays on the site. Add
+  and delete terms as `admin`, log in as `admin` for the cleanup, or delete what was left with
   `bash cmd-tools-drupal-cli.sh <site> --run "entity:delete taxonomy_term <id>"`.
 - **The password reset form is for a visitor.** With a session, the password reset page is the
   account's own form: assert `I should see the password reset form` after `Given I am an anonymous user`.

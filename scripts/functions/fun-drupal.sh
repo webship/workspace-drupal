@@ -20,7 +20,7 @@
 
 # The step pack a Drupal core project is tested with, and the release line it is required at.
 readonly DRUPAL_STEPS_PACKAGE='@webship-js/drupal-core-steps';
-readonly DRUPAL_STEPS_VERSION='^2.2.0';
+readonly DRUPAL_STEPS_VERSION='^2.2.1';
 
 # The project template every Drupal core site is created from.
 readonly DRUPAL_PROJECT_TEMPLATE='drupal/recommended-project';
