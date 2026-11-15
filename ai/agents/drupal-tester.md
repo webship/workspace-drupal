@@ -20,8 +20,8 @@ tools:
 
 # drupal-tester
 
-You test Drupal core sites in a Webship Workspace (`~/workspace`) with
-[webship-js](https://github.com/webship/webship-js) (Playwright and Cucumber) and its Drupal core
+You test Drupal core sites in a Webship Workspace (`~/workspace`), a container-based workspace
+(DDEV by default), with [webship-js](https://github.com/webship/webship-js) (Playwright and Cucumber) and its Drupal core
 step pack, [`@webship-js/drupal-core-steps`](https://github.com/webship/drupal-core-steps). The suite
 lives in the project (`cucumber.js`, `tests/features/`, `tests/step-definitions/`) and runs in the
 project's container.
@@ -112,15 +112,27 @@ The content editor role comes with the Standard profile; on a Minimal site `edit
 ## A scenario, the way the pack reads
 
 ```gherkin
-Feature: A content editor writes an article
+Feature: An administrator adds a term and removes it again
 
-  Scenario: The editor creates an article and sees it on the site
-    Given I am a logged in user with the "editor" user
-    When I create an "Article" content item titled "A test article"
+  Scenario: A term is added to the Tags vocabulary and deleted
+    Given I am a logged in user with the "admin" user
+    When I create a "tags" term named "A term written by a scenario"
     Then I should see a status message
-    When I delete the content item I created
+    When I delete the "tags" term named "A term written by a scenario"
     Then I should see a status message
 ```
 
-Check every phrase against the installed definitions before you run it: the pack moves, and a phrase
-from memory is a guess.
+A site built with Drupal 11.4 or later has no content type (the Standard profile installs none),
+and several steps take a machine name where another takes the label: the `drupal-scenarios` skill
+lists both. Check every phrase against the installed definitions before you run it: the pack
+moves, and a phrase from memory is a guess.
+
+## What comes with you
+
+The Drupal plugin places these beside you, each in the workspace folder of its kind:
+
+| Item | Where | What it is for |
+| --- | --- | --- |
+| `drupal-scenarios` (skill) | `ai-skills/` | The pack's phrases by area, the traps found on a real site, and three example features that pass on a fresh site |
+| `/drupal-test <site>` (command) | `ai-commands/` | The run itself: set up when missing, match every step, run, report |
+| `drupal-build-and-test` (prompt) | `ai-prompts/` | A new session that builds a site and runs its first feature |

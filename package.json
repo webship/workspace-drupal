@@ -1,7 +1,7 @@
 {
   "name": "@webship.co/workspace-drupal",
   "version": "1.0.7",
-  "description": "Drupal for Webship Workspace: one builder for Drupal core (`cmd-drupal-project.sh`, Drupal 11, 12 or a named release) and the Drush tool in every sites folder, the default accounts, the Drupal core step pack wired into the testing setup, and two AI agents in the AI Agents folder.",
+  "description": "Drupal for Webship Workspace: one builder for Drupal core (`cmd-drupal-project.sh`, Drupal 11, 12 or a named release) and the Drush tool in every sites folder, the default accounts, the Drupal core step pack wired into the testing setup, and its AI items in their folders: two agents, a skill, a command and a prompt.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "license": "ISC",
@@ -11,8 +11,9 @@
   },
   "files": [
     "dist/src",
-    "agents",
+    "ai",
     "commands",
+    "docs",
     "features",
     "scripts",
     "testing",
@@ -34,7 +35,10 @@
         "sandboxes",
         "demos"
       ],
-      "ai-agents"
+      "ai-agents",
+      "ai-skills",
+      "ai-commands",
+      "ai-prompts"
     ],
     "commands": {
       "types": [
@@ -65,8 +69,17 @@
     },
     "ai": {
       "agents": [
-        "agents/drupal-site-builder.md",
-        "agents/drupal-tester.md"
+        "ai/agents/drupal-site-builder.md",
+        "ai/agents/drupal-tester.md"
+      ],
+      "skills": [
+        "ai/skills/drupal-scenarios"
+      ],
+      "commands": [
+        "ai/commands/drupal-test.md"
+      ],
+      "prompts": [
+        "ai/prompts/drupal-build-and-test.md"
       ]
     },
     "features": [
