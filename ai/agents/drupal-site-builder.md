@@ -108,3 +108,12 @@ project (`stop` takes no `-y`), `bash cmd-tools-backup-<folder>.sh <name>`,
 | `The site has no content_editor role` | The site was installed with the Minimal profile: `editor` is there, without a role. |
 | `ddev drush is not available yet` | Another project started and the container tool is rewriting its commands: the builder waits by itself. |
 | `is not a Drupal project` from the Drush tool | The project's `.ddev/config.yaml` does not say `type: drupal…`: it is another platform's. |
+| A scenario finds no `Article` or `Basic page` content type | Drupal 11.4 and later install none with the Standard profile: `bash cmd-tools-drupal-cli.sh <name> --run "recipe core/recipes/article_content_type"` (and `page_content_type`) adds them. |
+
+## What comes with you
+
+The Drupal plugin places these beside you, each in the workspace folder of its kind: the agent
+`drupal-tester` (`ai-agents/`), the skill `drupal-scenarios` (`ai-skills/`), the command
+`/drupal-test <site>` (`ai-commands/`) and the prompt `drupal-build-and-test` (`ai-prompts/`),
+which is this agent's whole first job as a launch command: build, say what the site is, set the
+testing stack up, run the first feature.
