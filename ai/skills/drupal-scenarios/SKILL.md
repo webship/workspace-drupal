@@ -270,3 +270,21 @@ bash cmd-tools-testing.sh <site> --run --path tests/features/roles-and-access.fe
 | `examples/roles-and-access.feature` | Each default account reaching, or being refused, a path; the navigation sidebar of a role; the permissions of a role |
 | `examples/site-as-built.feature` | The modules, the default theme, the main menu, the front page and the status report of the build |
 | `examples/terms-and-menu-links.feature` | An administrator adding and deleting a term and a menu link: what a scenario creates, it removes |
+
+## The book
+
+For any automated functional testing in this work (a Gherkin feature, a step definition, choosing a
+step, a test run and its failures), read the book *Automated Functional Testing Recipes* first.
+
+- **Where.** Use the first that exists: `.claude/automated-functional-testing-recipes/` in the project,
+  `~/.claude/automated-functional-testing-recipes/` (installed by webship/webship-js-ai-agent,
+  webship/webship-js-skills or webship/ai-agents), or
+  https://github.com/webship/webship-js-ai-agent/tree/2.0.x/automated-functional-testing-recipes
+- **How.** Its `README.md` first, then the chapter that matches the task (one file per chapter,
+  named by its subject), not the single complete file.
+- **Which wins.** The installed webship-js package and the step pack are the source of truth for
+  step phrasing. When they differ from the book, follow them and say so.
+- **For Drupal.** Start with `ch26-testing-cms-applications.md` (content, publishing, media and
+  taxonomy), `ch10-authentication-authorization.md` (logins, sessions and access by role),
+  `ch33-complete-step-definition-reference.md` (every built-in step) and `ch21-when-tests-go-bad.md`
+  (flaky, brittle and slow scenarios).
